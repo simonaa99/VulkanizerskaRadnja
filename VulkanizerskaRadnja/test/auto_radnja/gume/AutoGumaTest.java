@@ -1,6 +1,3 @@
-/**
- * 
- */
 package auto_radnja.gume;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -11,16 +8,20 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-
 /**
+ * Test klasa za klasu AutoGuma
  * @author Simona Baosic
  *
  */
 class AutoGumaTest {
-
-	AutoGuma a;
 	/**
-	 * @throws java.lang.Exception
+	 * Atribut AutoGuma
+	 */
+	AutoGuma a;
+	
+	/**
+	 * Pre svakog testa inicijalizuje objekat AutoGuma
+	 * @throws Exception vraca exception ako dodje do greske
 	 */
 	@BeforeEach
 	void setUp() throws Exception {
@@ -28,7 +29,8 @@ class AutoGumaTest {
 	}
 
 	/**
-	 * @throws java.lang.Exception
+	 * Posle svakog testa stavlja vrednost objekta AutoGuma na null
+	 * @throws Exception vraca exception ako dodje do greske
 	 */
 	@AfterEach
 	void tearDown() throws Exception {
@@ -36,7 +38,7 @@ class AutoGumaTest {
 	}
 
 	/**
-	 * Test method for {@link auto_radnja.gume.AutoGuma#AutoGuma()}.
+	 * Prazan konstruktor
 	 */
 	@Test
 	void testAutoGuma() {
@@ -49,7 +51,7 @@ class AutoGumaTest {
 	}
 
 	/**
-	 * Test method for {@link auto_radnja.gume.AutoGuma#AutoGuma(java.lang.String, int, int, int)}.
+	 * Konstruktor koji prima vrednosti modela,precnik,sirine i visine i postavlja ih u objekat AutoGuma
 	 */
 	@Test
 	@DisplayName("testiranje konstruktora sa cetiri parametra")
@@ -63,7 +65,7 @@ class AutoGumaTest {
 	}
 
 	/**
-	 * Test method for {@link auto_radnja.gume.AutoGuma#setMarkaModel(java.lang.String)}.
+	 * Testira metodu setMarkaModela
 	 */
 	@Test
 	void testSetMarkaModel() {
@@ -71,25 +73,33 @@ class AutoGumaTest {
 		
 		assertEquals("Michelin S", a.getMarkaModel());
 	}
-	
+	/**
+	 * Testira metodu setMarkaModela da kada je uneta vrednost null baca Exception
+	 */
 	@Test
 	void testSetMarkaModelNull() {
 		assertThrows(java.lang.NullPointerException.class,
 				() -> a.setMarkaModel(null));
 	}
-	
+	/**
+	 * Testira metodu setMarkaModela da kada je uneta vrednost duzine 1 baca Exception
+	 */
 	@Test
 	void testSetMarkaModelBrojZnakova1() {
 		assertThrows(java.lang.IllegalArgumentException.class,
 				() -> a.setMarkaModel("N"));
 	}
-	
+	/**
+	 * Testira metodu setMarkaModela da kada je uneta vrednost duzine 2 baca Exception
+	 */
 	@Test
 	void testSetMarkaModelBrojZnakova2() {
 		assertThrows(java.lang.IllegalArgumentException.class,
 				() -> a.setMarkaModel("Ni"));
 	}
-	
+	/**
+	 * Testira metodu setMarkaModela da kada je uneta vrednost duzine 0 baca Exception
+	 */
 	@Test
 	void testSetMarkaModelBrojZnakova0() {
 		assertThrows(java.lang.IllegalArgumentException.class,
@@ -97,7 +107,7 @@ class AutoGumaTest {
 	}
 
 	/**
-	 * Test method for {@link auto_radnja.gume.AutoGuma#setPrecnik(int)}.
+	 * Testira metodu setPrecnik
 	 */
 	@Test
 	void testSetPrecnik() {
@@ -106,6 +116,11 @@ class AutoGumaTest {
 		assertEquals(15, a.getPrecnik());
 	}
 	
+	/**
+	 * Testira metodu setPrecnik u zavisnosti da li uneta vrednost pripada odredjenom opsegu
+	 * @param precnik uneta vrednost precnika gume
+	 * @param except da li baca exception ili vraca null
+	 */
 	@ParameterizedTest
 	@CsvSource({
 			"4 ,java.lang.IllegalAccessException",
@@ -121,7 +136,7 @@ class AutoGumaTest {
 	
 
 	/**
-	 * Test method for {@link auto_radnja.gume.AutoGuma#setSirina(int)}.
+	 * Testira metodu setSirina
 	 */
 	@Test
 	void testSetSirina() {
@@ -129,7 +144,11 @@ class AutoGumaTest {
 		
 		assertEquals(145, a.getSirina());
 	}
-	
+	/**
+	 * Testira metodu setSirina u zavisnosti da li uneta vrednost pripada odredjenom opsegu
+	 * @param sirina uneta vrednost sirine gume
+	 * @param except da li baca exception ili vraca null
+	 */
 	@ParameterizedTest
 	@CsvSource({
 			"4 ,java.lang.IllegalAccessException",
@@ -143,7 +162,7 @@ class AutoGumaTest {
 	}
 
 	/**
-	 * Test method for {@link auto_radnja.gume.AutoGuma#setVisina(int)}.
+	 * Testira metodu setVisina
 	 */
 	@Test
 	void testSetVisina() {
@@ -151,7 +170,11 @@ class AutoGumaTest {
 		
 		assertEquals(50, a.getVisina());
 	}
-	
+	/**
+	 * Testira metodu setVisina u zavisnosti da li uneta vrednost pripada odredjenom opsegu
+	 * @param visina uneta vrednost visina gume
+	 * @param except da li baca exception ili vraca null
+	 */
 	@ParameterizedTest
 	@CsvSource({
 			"4 ,java.lang.IllegalAccessException",
@@ -165,7 +188,7 @@ class AutoGumaTest {
 	}
 
 	/**
-	 * Test method for {@link auto_radnja.gume.AutoGuma#toString()}.
+	 * Testira metodu toString
 	 */
 	@Test
 	void testToString() {
@@ -183,7 +206,16 @@ class AutoGumaTest {
 	}
 
 	/**
-	 * Test method for {@link auto_radnja.gume.AutoGuma#equals(java.lang.Object)}.
+	 * Testira metodu equals
+	 * @param model1 uneti model prve gume
+	 * @param precnik1 uneti precnik prve gume
+	 * @param sirina1 uneta sirina prve gume
+	 * @param visina1 uneta visina prve gume
+	 * @param model2 uneti model druge gume
+	 * @param precnik2 uneti precnik druge gume
+	 * @param sirina2 uneta sirina druge gume
+	 * @param visina2 uneta visina druge gume
+	 * @param rezultat da li su vrednosti iste ili se razlikuju
 	 */
 	@ParameterizedTest
 	@CsvSource({

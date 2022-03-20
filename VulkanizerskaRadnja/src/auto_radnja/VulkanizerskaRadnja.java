@@ -3,9 +3,15 @@ package auto_radnja;
 import java.util.List;
 import java.util.LinkedList;
 import auto_radnja.gume.AutoGuma;
-
+/**
+ * Implementira interfejs Radnja i sve njene metode
+ * @author Simona Baosic
+ *
+ */
 public class VulkanizerskaRadnja implements Radnja {
-	
+	/**
+	 * Atribut koji predstavlja listu svih guma
+	 */
 	private List<AutoGuma> gume = new LinkedList<AutoGuma>();
 	
 	@Override
